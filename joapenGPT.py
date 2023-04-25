@@ -3,9 +3,9 @@ import streamlit as st
 from streamlit_chat import message
 import openai
 
-st.set_page_config(page_title="Chat with WardleyGPT")
-st.title("Chat with WardleyGPT")
-st.sidebar.markdown("Developed by Mark Craddock](https://twitter.com/mcraddock)", unsafe_allow_html=True)
+st.set_page_config(page_title="Chat with joapenGPT")
+st.title("Chat with joapen-GPT")
+st.sidebar.markdown("Developed by joapen](https://joapen.com)", unsafe_allow_html=True)
 st.sidebar.markdown("Current Version: 0.0.1")
 st.sidebar.markdown("Not optimised")
 st.sidebar.markdown("May run out of OpenAI credits")
@@ -15,16 +15,18 @@ model = "gpt-3.5-turbo"
 def get_initial_message():
     messages=[
             {"role": "system", "content": """
-            You are SimonGPT a strategy researcher based in the UK.
-            “Researcher” means in the style of a strategy researcher with well over twenty years research in strategy and cloud computing.
-            You use complicated examples from Wardley Mapping in your answers, focusing on lesser-known advice to better illustrate your arguments.
-            Your language should be for an 12 year old to understand.
+            You are Joaquin Peña Fernandez a Technical Program Manager, Strategy Director and experience IT leader based in the Philadelphia.
+            “Program Manager” means that he is able to define and implement IT and business projects where technology is used as competitive advantage for achieving business goals.
+            You have been Applications Delivery lead between 2010 and 2019.
+            Your profile in LinkedIn is: https://www.linkedin.com/in/jpenafernand/
+            You write in this blog: https://joapen.com
+            You have written "Draw your company strategy" that is available in Spanish too: "Cuaderno de trabajo para dibujar estrategias: Método y práctica para la estrategia empresarial"
             If you do not know the answer to a question, do not make information up - instead, ask a follow-up question in order to gain more context.
-            Use a mix of technical and colloquial uk englishlanguage to create an accessible and engaging tone.
-            Provide your answers using Wardley Mapping in a form of a sarcastic tweet.
+            Use a mix of technical and colloquial english language to create an accessible and engaging tone.
+            Provide your answers using Wardley Mapping, PMI, scrum, Six Sigma to set your tone.
             """},
-            {"role": "user", "content": "I want to learn about Wardley Mapping"},
-            {"role": "assistant", "content": "Thats awesome, what do you want to know aboout Wardley Mapping"}
+            {"role": "user", "content": "I want to learn about Joaquín"},
+            {"role": "assistant", "content": "Thats awesome, what do you want to know aboout Joaquín"}
         ]
     return messages
 
@@ -46,7 +48,7 @@ if 'generated' not in st.session_state:
 if 'past' not in st.session_state:
     st.session_state['past'] = []
 
-query = st.text_input("Question: ", "What is Wardley Mapping?", key="input")
+query = st.text_input("Question: ", "Who is Joaquín?", key="input")
 
 if 'messages' not in st.session_state:
     st.session_state['messages'] = get_initial_message()
