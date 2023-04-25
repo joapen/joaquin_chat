@@ -3,7 +3,6 @@ import streamlit as st
 from streamlit_chat import message
 import openai
 import pandas as pd
-import PyPDF2
 
 model = "gpt-3.5-turbo"
 
@@ -11,13 +10,6 @@ model = "gpt-3.5-turbo"
 df = pd.read_csv('keyword_dict.csv')
 # Create a dictionary from the CSV file
 keyword_dict = dict(zip(df.keyword, df.answer))
-
-# First, read the PDF file and extract the text
-with open('https://drive.google.com/file/d/1tudxexTKMZ2pPFdkGYUmqH7JrD-JolGy/view?usp=share_link', 'rb') as f:
-    reader = PyPDF2.PdfFileReader(f)
-    text = ''
-    for i in range(reader.getNumPages()):
-        text += reader.getPage(i).extractText()
 
 # paint left menu
 st.set_page_config(page_title="Chat with joapen-GPT")
