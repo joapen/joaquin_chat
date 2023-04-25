@@ -3,23 +3,30 @@ import streamlit as st
 from streamlit_chat import message
 import openai
 import pandas as pd
-
-st.set_page_config(page_title="Chat with joapenGPT")
-st.title("Chat with joapen-GPT")
-st.sidebar.markdown("Developed by joapen](https://joapen.com)", unsafe_allow_html=True)
-st.sidebar.markdown("LinkedIn Profile](https://www.linkedin.com/in/jpenafernand/)", unsafe_allow_html=True)
-st.sidebar.markdown("Current Version: 0.0.1")
-st.sidebar.markdown("Not optimised")
-st.sidebar.markdown("May run out of OpenAI credits")
+import PyPDF2
 
 model = "gpt-3.5-turbo"
 
 # Read the CSV file
 df = pd.read_csv('keyword_dict.csv')
-        
 # Create a dictionary from the CSV file
 keyword_dict = dict(zip(df.keyword, df.answer))
 
+# First, read the PDF file and extract the text
+with open('https://drive.google.com/file/d/1tudxexTKMZ2pPFdkGYUmqH7JrD-JolGy/view?usp=share_link', 'rb') as f:
+    reader = PyPDF2.PdfFileReader(f)
+    text = ''
+    for i in range(reader.getNumPages()):
+        text += reader.getPage(i).extractText()
+
+# paint left menu
+st.set_page_config(page_title="Chat with joapen-GPT")
+st.title("Chat with joapen-GPT")
+st.sidebar.markdown("Developed by joapen (https://joapen.com)", unsafe_allow_html=True)
+st.sidebar.markdown("LinkedIn Profile (https://www.linkedin.com/in/jpenafernand/)", unsafe_allow_html=True)
+st.sidebar.markdown("Current Version: 0.0.1")
+st.sidebar.markdown("Not optimised")
+st.sidebar.markdown("May run out of OpenAI credits")
 
 def get_initial_message():
     messages=[
@@ -38,7 +45,11 @@ def get_initial_message():
             {"role": "system", "content": "Joaquín has different certifications published here: https://joapen.com/blog/courses/ "},
             {"role": "system", "content": "Joaquín has done all these training courses: https://joapen.com/blog/courses/ "},
             {"role": "system", "content": "Joaquín loves basketball and now runs and ride the bike."},
-            {"role": "system", "content": "Joaquín loves basketball and now runs and ride the bike."},
+            {"role": "system", "content": "Joaquín started to work in July 2000."},
+            {"role": "system", "content": "Joaquín worked as software developer during 3 years."},
+            {"role": "system", "content": "Joaquín worked as software analyst during 2 years."},
+            {"role": "system", "content": "Joaquín worked as project manager during more than 15 years."},
+            {"role": "system", "content": "Joaquín worked as Applications delivery lead during 3 years."},
             {"role": "user", "content": "I want to learn about Joaquín"},
             {"role": "assistant", "content": "Thats awesome, what do you want to know about Joaquín"}
         ]
