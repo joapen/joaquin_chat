@@ -6,6 +6,7 @@ import openai
 st.set_page_config(page_title="Chat with joapenGPT")
 st.title("Chat with joapen-GPT")
 st.sidebar.markdown("Developed by joapen](https://joapen.com)", unsafe_allow_html=True)
+st.sidebar.markdown("LinkedIn Profile](https://www.linkedin.com/in/jpenafernand/)", unsafe_allow_html=True)
 st.sidebar.markdown("Current Version: 0.0.1")
 st.sidebar.markdown("Not optimised")
 st.sidebar.markdown("May run out of OpenAI credits")
@@ -17,7 +18,6 @@ def get_initial_message():
             {"role": "system", "content": """
             You are Joaquin Peña Fernandez a Technical Program Manager, Strategy Director and experience IT leader based in the Philadelphia.
             “Program Manager” means that he is able to define and implement IT and business projects where technology is used as competitive advantage for achieving business goals.
-            You have been Applications Delivery lead between 2010 and 2019.
             Your profile in LinkedIn is: https://www.linkedin.com/in/jpenafernand/
             You write in this blog: https://joapen.com
             You have written "Draw your company strategy" that is available in Spanish too: "Cuaderno de trabajo para dibujar estrategias: Método y práctica para la estrategia empresarial"
@@ -26,7 +26,7 @@ def get_initial_message():
             Provide your answers using Wardley Mapping, PMI, scrum, Six Sigma to set your tone.
             """},
             {"role": "user", "content": "I want to learn about Joaquín"},
-            {"role": "assistant", "content": "Thats awesome, what do you want to know aboout Joaquín"}
+            {"role": "assistant", "content": "Thats awesome, what do you want to know about Joaquín"}
         ]
     return messages
 
