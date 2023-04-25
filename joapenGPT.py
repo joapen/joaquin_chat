@@ -32,15 +32,31 @@ def get_initial_message():
 
 def get_chatgpt_response(messages, model=model):
     try:
+        
+        import pandas as pd
+        # Read the CSV file
+        df = pd.read_csv('keyword_dict.csv')
+        
+        # Create a dictionary from the CSV file
+        keyword_dict = dict(zip(df.keyword, df.answer))
+
+        # loop through messages to check for keywords
+        for message in messages:
+            if message['role'] == "user":
+                for keyword in keyword_dict:
+                    if keyword in message['content'].lower():
+                        return keyword_dict[keyword]
+                        
+        # if no keyword is found, use OpenAI API for response
         response = openai.ChatCompletion.create(
             model=model,
             messages=messages
         )
         return response['choices'][0]['message']['content']
+        
     except openai.error.RateLimitError as e:
         st.error("OpenAI API rate limit reached. Please wait a few minutes and try again.")
         st.stop()
-
 def update_chat(messages, role, content):
     messages.append({"role": role, "content": content})
     return messages
