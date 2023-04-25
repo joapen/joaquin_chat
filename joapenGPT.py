@@ -2,6 +2,7 @@
 import streamlit as st
 from streamlit_chat import message
 import openai
+import pandas as pd
 
 st.set_page_config(page_title="Chat with joapenGPT")
 st.title("Chat with joapen-GPT")
@@ -12,6 +13,13 @@ st.sidebar.markdown("Not optimised")
 st.sidebar.markdown("May run out of OpenAI credits")
 
 model = "gpt-3.5-turbo"
+
+# Read the CSV file
+df = pd.read_csv('keyword_dict.csv')
+        
+# Create a dictionary from the CSV file
+keyword_dict = dict(zip(df.keyword, df.answer))
+
 
 def get_initial_message():
     messages=[
@@ -32,14 +40,6 @@ def get_initial_message():
 
 def get_chatgpt_response(messages, model=model):
     try:
-        
-        import pandas as pd
-        # Read the CSV file
-        df = pd.read_csv('keyword_dict.csv')
-        
-        # Create a dictionary from the CSV file
-        keyword_dict = dict(zip(df.keyword, df.answer))
-
         # loop through messages to check for keywords
         for message in messages:
             if message['role'] == "user":
