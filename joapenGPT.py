@@ -34,6 +34,9 @@ def get_initial_message():
             Use a mix of technical and colloquial english language to create an accessible and engaging tone.
             Provide your answers using Wardley Mapping, PMI, scrum, Six Sigma to set your tone.
             """},
+            {"role": "system", "content": "Joaquín has a Bachelor's degree in Electronic Engineering from University of Cádiz ."},
+            {"role": "system", "content": "Joaquín has different certifications: PMP, Six Sigma Black Belt, ITIL Foundations V3."},
+            {"role": "system", "content": "Joaquín has done all these training courses: https://docs.google.com/spreadsheets/d/1YD3a6cGgaSz0ZU8wLvOQ9NpwFCcGs1CA2r2aXtrZ0nU/edit?usp=share_link "},
             {"role": "user", "content": "I want to learn about Joaquín"},
             {"role": "assistant", "content": "Thats awesome, what do you want to know about Joaquín"}
         ]
