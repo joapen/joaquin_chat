@@ -31,12 +31,15 @@ def get_initial_message():
     return messages
 
 def get_chatgpt_response(messages, model=model):
-    print("model: ", model)
-    response = openai.ChatCompletion.create(
-    model=model,
-    messages=messages
-    )
-    return response['choices'][0]['message']['content']
+    try:
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=messages
+        )
+        return response['choices'][0]['message']['content']
+    except openai.error.RateLimitError as e:
+        st.error("OpenAI API rate limit reached. Please wait a few minutes and try again.")
+        st.stop()
 
 def update_chat(messages, role, content):
     messages.append({"role": role, "content": content})
