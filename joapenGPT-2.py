@@ -1,5 +1,14 @@
-# 0.- Notes
-# This code uses requirements2.txt
+# 0.- Install required packages from requirements2.txt
+import subprocess
+import sys
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Install required packages
+with open("requirements2.txt") as f:
+    for line in f:
+        install(line)
 
 # 1.- Importing required packages
 import os
