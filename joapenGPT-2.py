@@ -1,3 +1,4 @@
+# https://medium.com/@mcraddock/building-a-wardley-mapping-books-ai-assistant-using-langchain-faiss-and-openai-a-code-3f476d4f2626 
 # 0.- Install required packages from requirements2.txt
 import subprocess
 import sys
