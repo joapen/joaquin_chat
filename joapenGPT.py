@@ -16,7 +16,7 @@ st.set_page_config(page_title="Chat with joapen-GPT")
 st.title("Chat with joapen-GPT")
 st.sidebar.markdown("Developed by joapen (https://joapen.com)", unsafe_allow_html=True)
 st.sidebar.markdown("LinkedIn Profile (https://www.linkedin.com/in/jpenafernand/)", unsafe_allow_html=True)
-st.sidebar.markdown("Current Version: 0.0.1")
+st.sidebar.markdown("Current Version: 0.1")
 st.sidebar.markdown("Not optimised")
 st.sidebar.markdown("May run out of OpenAI credits")
 
