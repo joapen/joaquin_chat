@@ -1,0 +1,5 @@
+langchain
+openai
+streamlit
+faiss-cpu
+gpt_index
