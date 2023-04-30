@@ -7,5 +7,5 @@ This code supports the blog post on creating a ChatBot using OpenAI. To learn mo
   <img src="images/joapen-chat-gpt-1.jpg" alt="Joaquin GPT-2 Chatbot">
 </div>
 
-Version 1: it does just use Linkedin Profile and metadata given to the model as basis of data.
-Version 2: it adds information stored on a folder as source of information
+Version 0.1: it does just use Linkedin Profile and metadata given to the model as basis of data.
+Version 0.2: it adds information stored on a folder as source of information
