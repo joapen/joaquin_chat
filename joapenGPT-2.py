@@ -1,15 +1,17 @@
 # https://medium.com/@mcraddock/building-a-wardley-mapping-books-ai-assistant-using-langchain-faiss-and-openai-a-code-3f476d4f2626 
 # 0.- Install required packages from requirements2.txt
-import subprocess
-import sys
+pip install -r requirements2.txt
 
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+# import subprocess
+# import sys
+
+# def install(package):
+#     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 # Install required packages
-with open("requirements2.txt") as f:
-    for line in f:
-        install(line)
+# with open("requirements2.txt") as f:
+#     for line in f:
+#         install(line)
 
 # 1.- Importing required packages
 import os
