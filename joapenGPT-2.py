@@ -9,6 +9,7 @@ def install(package):
 # Install required packages
 with open("requirements2.txt") as f:
     for line in f:
+        print(line)
         install(line)
 
 # 1.- Importing required packages
