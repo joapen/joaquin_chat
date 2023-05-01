@@ -9,7 +9,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
-from langchain.templates import SystemMessagePromptTemplate
+#from langchain.templates import SystemMessagePromptTemplate
 
 # 2.- Set OpenAI API key from Streamlit secrets
 openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -25,15 +25,8 @@ st.sidebar.markdown("May run out of OpenAI credits")
 
 # 4 Loading the datastore
 DATA_STORE_DIR = "data_store"
-
-if os.path.exists(DATA_STORE_DIR):
-  #st.write("Loading database")
-  vector_store = FAISS.load_local(
-      DATA_STORE_DIR,
-      OpenAIEmbeddings()
-  )
-else:
-  st.write(f"Missing files. Upload index.faiss and index.pkl files to {DATA_STORE_DIR} directory first")
+st.write("Loading database")
+vector_store = FAISS.load_local(DATA_STORE_DIR, OpenAIEmbeddings())
 
 # 5.- Configuring the chat model
 system_template="""Use the following pieces of context to answer the users question.
