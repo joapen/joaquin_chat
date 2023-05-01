@@ -9,7 +9,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
-from langchain.templates import SystemMessagePromptTemplate
 
 # 2.- Set OpenAI API key from Streamlit secrets
 openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -29,6 +28,12 @@ st.write("Loading database")
 vector_store = FAISS.load_local(DATA_STORE_DIR, OpenAIEmbeddings())
 
 # 5.- Configuring the chat model
+from langchain.prompts.chat import (
+    ChatPromptTemplate,
+    SystemMessagePromptTemplate,
+    HumanMessagePromptTemplate,
+)
+
 system_template="""Use the following pieces of context to answer the users question.
 Take note of the sources and include them in the answer in the format: "SOURCES: source1 source2", use "SOURCES" in capital letters regardless of the number of sources.
 If you don't know the answer, just say that "I don't know", don't try to make up an answer.
