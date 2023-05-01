@@ -1,5 +1,6 @@
 langchain
 openai
-streamlit
+tiktoken
+pypdf
 faiss-cpu
-gpt_index
+streamlit
