@@ -1,3 +1,5 @@
+langchain
 openai
 streamlit
-streamlit-chat
+faiss-cpu
+gpt_index
